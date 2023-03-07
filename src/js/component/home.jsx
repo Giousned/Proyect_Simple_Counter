@@ -6,24 +6,43 @@ import Counter from "./Counter.jsx";
 import Button from "./Button.jsx";
 import CounterDown from "./CounterDown.jsx";
 import Input from "./Input.jsx";
+import AlertInput from "./AlertInput.jsx";
 
-let valorIncial = 9;
+
+// let valorInicial = 9;
 
 //create your first component
 const Home = () => {
-	const [estado, setEstado] = useState(valorIncial);
+	const [estado, setEstado] = useState(false);
+	const [reset, setReset] = useState(false);
+	const [alert, setAlert] = useState("");
 
-	const handleInputValor = (valor) => {
-		setEstado(valor);
+	const handleAlertInputValor = (e,valor) => {
+		if(e.key === "Enter") setAlert(valor);
 	}
+
+	const handleStartCounter = () => {
+		setEstado(true);		
+	}
+
+	const handleResetCounter = () => {
+		setReset(!reset);		
+	}
+
+	const handleStopCounter = () => {
+		setEstado(false);
+	}
+
 
 	return (
 	<>
-		<Counter />
-		<Button />
+		<Counter estado={estado} reset={reset} handleStopCounter={handleStopCounter} alert={alert} />
+		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
 
-		<CounterDown valorInicial={estado} />
-		<Input handleInputValor={handleInputValor} />
+		<AlertInput handleAlertInputValor={handleAlertInputValor} />
+
+		{/* <CounterDown valorInicial={estado} />
+		<Input handleInputValor={handleInputValor} /> */}
 	</>
 	);
 };

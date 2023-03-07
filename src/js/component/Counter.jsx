@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+
+import { useState, useEffect } from "react";
 
 import "../../styles/counter.css";
 
@@ -10,8 +12,17 @@ const Counter = (props) => {
   const [five, setFive] = useState(0);
   const [six, setSix] = useState(0);
 
+  const [contador, setContador] = useState(0);
 
   function sumarUnidades () {
+    if (props.estado === false) { setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);}
+
+    setContador(contador +1);
+    if(props.alert && props.alert == contador) {
+      alert ("Se ha alcanzado el tiempo!");
+      props.handleStopCounter();
+      setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);
+    }
 
     if (six === 9) { setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);}
     
@@ -28,7 +39,9 @@ const Counter = (props) => {
     else setOne(one + 1);
   }
 
-  setTimeout(sumarUnidades, 1000);
+  if(props.estado) {setTimeout(sumarUnidades, 1000);}
+
+  useEffect((prev)=>{props.handleStopCounter(); setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);},[props.reset])
 
   return (
     <div className="container d-flex text-bg-dark">
@@ -49,6 +62,7 @@ const Counter = (props) => {
 
 export default Counter;
 
+// {timer = setTimeout(sumarUnidades, 1000);}
 
 // function Timer(callback, delay) {
 //   var timerId, start, remaining = delay;

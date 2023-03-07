@@ -1,13 +1,16 @@
 import React from "react";
 
-const Button = () => {
+const Button = (props) => {
   return (
     <div className="container my-0 d-flex justify-content-center">
       <div className="btn-group" role="group" aria-label="Basic example">
-        <button type="button" className="btn btn-primary">
+        <button onClick={props.handleStartCounter} type="button" className="btn btn-success">
           START
         </button>
-        <button type="button" className="btn btn-primary">
+        <button onClick={props.handleResetCounter} type="button" className="btn btn-secondary">
+          RESET
+        </button>
+        <button onClick={props.handleStopCounter} type="button" className="btn btn-danger">
           STOP
         </button>
       </div>
