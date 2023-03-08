@@ -6,7 +6,7 @@ const AlertInput = (props) => {
   const [value, setValue] = useState("");
 
   return (
-    <div className="container my-0 d-flex justify-content-center w-50">
+    <div id="alertInput" className="container my-0 d-flex justify-content-center w-50">
       <div className="input-group mb-3 w-75">
         <span className="input-group-text" id="basic-addon1">
           Insert Alert Number:

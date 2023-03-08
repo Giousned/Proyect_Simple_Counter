@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "../../styles/counter.css";
 
 
-const CounterDown = (props) => {
+const CounterDown2 = (props) => {
 
   const [one, setOne] = useState(9);
   const [two, setTwo] = useState();
@@ -75,7 +75,7 @@ const CounterDown = (props) => {
   );
 };
 
-export default CounterDown;
+export default CounterDown2;
 
 
   // useEffect(() => {

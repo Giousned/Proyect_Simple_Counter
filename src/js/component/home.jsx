@@ -7,6 +7,7 @@ import Button from "./Button.jsx";
 import CounterDown from "./CounterDown.jsx";
 import Input from "./Input.jsx";
 import AlertInput from "./AlertInput.jsx";
+import Counter3 from "./Counter3.jsx";
 
 
 // let valorInicial = 9;
@@ -33,13 +34,15 @@ const Home = () => {
 		setEstado(false);
 	}
 
-
 	return (
 	<>
+		<Counter3 />
+
 		<Counter estado={estado} reset={reset} handleStopCounter={handleStopCounter} alert={alert} />
 		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
 
 		<AlertInput handleAlertInputValor={handleAlertInputValor} />
+
 
 		{/* <CounterDown valorInicial={estado} />
 		<Input handleInputValor={handleInputValor} /> */}
