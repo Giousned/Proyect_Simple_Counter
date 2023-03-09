@@ -15,8 +15,8 @@ const Input = (props) => {
         </span>
           <input
             type="text"
-            className="form-control"
-            placeholder="Number"
+            className="form-control text-center"
+            placeholder="Number + Enter"
             aria-label="Username"
             aria-describedby="basic-addon1"
             value={value}
