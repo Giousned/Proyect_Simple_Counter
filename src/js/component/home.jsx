@@ -21,7 +21,7 @@ const Home = () => {
 
 	const [alert, setAlert] = useState(999999);
 
-	const [valorDown, setValorDown] = useState(0);
+	const [valorDown, setValorDown] = useState(69);
 
 	let timeout = 0;
 
