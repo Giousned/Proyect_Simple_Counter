@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Counter from "./Counter.jsx";
 import Button from "./Button.jsx";
@@ -8,17 +8,22 @@ import CounterDown from "./CounterDown.jsx";
 import Input from "./Input.jsx";
 import AlertInput from "./AlertInput.jsx";
 import Counter3 from "./Counter3.jsx";
+import Counter2 from "./Counter2.jsx";
 
 
-// let valorInicial = 9;
 
 //create your first component
 const Home = () => {
+	const [counter, setCounter] = useState(0);
+
 	const [estado, setEstado] = useState(false);
 	const [reset, setReset] = useState(false);
-	const [alert, setAlert] = useState("");
 
-	const handleAlertInputValor = (e,valor) => {
+	const [alert, setAlert] = useState(999999);
+
+	const [valorDown, setValorDown] = useState(0);
+
+	const handleAlertInputValor = (e, valor) => {
 		if(e.key === "Enter") setAlert(valor);
 	}
 
@@ -27,6 +32,7 @@ const Home = () => {
 	}
 
 	const handleResetCounter = () => {
+		setEstado(false);
 		setReset(!reset);		
 	}
 
@@ -34,18 +40,30 @@ const Home = () => {
 		setEstado(false);
 	}
 
+	const handleInputValor = (e, valor) => {
+		if(e.key === "Enter") {
+			setValorDown(valor);
+		}
+	}
+
+	setTimeout(() => {
+		setCounter(counter + 1);
+	},1000)
+
+
 	return (
 	<>
-		<Counter3 />
+		<Counter2 counter={counter} />
 
-		<Counter estado={estado} reset={reset} handleStopCounter={handleStopCounter} alert={alert} />
-		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
-
+		<Counter3 alert={alert}/>
 		<AlertInput handleAlertInputValor={handleAlertInputValor} />
 
+		<Counter estado={estado} reset={reset}/>
+		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
 
-		{/* <CounterDown valorInicial={estado} />
-		<Input handleInputValor={handleInputValor} /> */}
+
+		<CounterDown valorInicial={valorDown} />
+		<Input handleInputValor={handleInputValor} />
 	</>
 	);
 };

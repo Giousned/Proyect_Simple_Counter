@@ -8,8 +8,6 @@ import "../styles/counter3.css";
 
 //import your own components
 import Home from "./component/home.jsx";
-import Counter2 from "./component/Counter2.jsx";
-
 
 //render your react application
 ReactDOM.render(<Home />, document.querySelector("#app"));
