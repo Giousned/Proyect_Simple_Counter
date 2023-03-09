@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Counter from "./Counter.jsx";
 import Button from "./Button.jsx";
@@ -23,6 +23,8 @@ const Home = () => {
 
 	const [valorDown, setValorDown] = useState(0);
 
+	let timeout = 0;
+
 	const handleAlertInputValor = (e, valor) => {
 		if(e.key === "Enter") setAlert(valor);
 	}
@@ -32,12 +34,15 @@ const Home = () => {
 	}
 
 	const handleResetCounter = () => {
+		setReset(!reset);
 		setEstado(false);
-		setReset(!reset);		
+		setCounter(0);
+		clearTimeout(timeout);	
 	}
 
 	const handleStopCounter = () => {
 		setEstado(false);
+		clearTimeout(timeout);
 	}
 
 	const handleInputValor = (e, valor) => {
@@ -46,20 +51,19 @@ const Home = () => {
 		}
 	}
 
-	setTimeout(() => {
-		setCounter(counter + 1);
-	},1000)
+	if(estado)  { timeout = setTimeout(() => { setCounter(counter + 1);},1000);} 
 
 
 	return (
 	<>
+		<Counter />
+
 		<Counter2 counter={counter} />
+		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
 
 		<Counter3 alert={alert}/>
 		<AlertInput handleAlertInputValor={handleAlertInputValor} />
 
-		<Counter estado={estado} reset={reset}/>
-		<Button handleStartCounter={handleStartCounter} handleResetCounter={handleResetCounter} handleStopCounter={handleStopCounter} />
 
 
 		<CounterDown valorInicial={valorDown} />

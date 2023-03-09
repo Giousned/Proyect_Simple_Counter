@@ -23,15 +23,15 @@ const CounterDown2 = (props) => {
     numeroSplit.forEach(e => {arr.push(Number(e));});
   } 
 
-  // useEffect(() => {
-  //   if (arr[5] != "undefined") {setSix(arr[5]); setFive(arr[4]); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
-  //     else if (arr[4] != "undefined") {setSix(0); setFive(arr[4]); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
-  //       else if (arr[3] != "undefined") {setSix(0); setFive(0); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
-  //         else if (arr[2] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
-  //           else if (arr[1] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(0); setTwo(arr[1]); setOne(arr[0]);}
-  //             else if (arr[0] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(0); setTwo(0); setOne(arr[0]);}
-  //               else setOne(9);
-  // },[inicio]);
+  useEffect(() => {
+    if (arr[5] != "undefined") {setSix(arr[5]); setFive(arr[4]); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
+      else if (arr[4] != "undefined") {setSix(0); setFive(arr[4]); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
+        else if (arr[3] != "undefined") {setSix(0); setFive(0); setFour(arr[3]); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
+          else if (arr[2] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(arr[2]); setTwo(arr[1]); setOne(arr[0]);}
+            else if (arr[1] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(0); setTwo(arr[1]); setOne(arr[0]);}
+              else if (arr[0] != "undefined") {setSix(0); setFive(0); setFour(0); setThree(0); setTwo(0); setOne(arr[0]);}
+                else setOne(9);
+  },[inicio]);
 
 
   function restarUnidades () {
@@ -40,19 +40,15 @@ const CounterDown2 = (props) => {
 
     else if (five === 0 && arr[4] != "undefined") { setOne(9); setFive(0); setSix(0);}
 
+    else if (four === 0 && arr[3] != "undefined") { setOne(9); setTwo(0); setThree(0); setFour(0); setFive(five - 1);}
+    
+    else if (three === 0 && arr[2] != "undefined") { setOne(9); setTwo(0); setThree(0); setFour(four - 1);}
 
-
-    if (one !== 0) setOne(one - 1);
-
+    else if (two === 0) { setOne(9); setTwo(0); setThree(three - 1);}
+    
     else if (one === 0) { setOne(9); setTwo(two - 1);}
 
-    // else if (two === 0) { setOne(9); setTwo(0); setThree(three - 1);}
-
-    // else if (three === 0 && arr[2] != "undefined") { setOne(9); setTwo(0); setThree(0); setFour(four - 1);}
-
-    // else if (four === 0 && arr[3] != "undefined") { setOne(9); setTwo(0); setThree(0); setFour(0); setFive(five - 1);}
-
-
+    else if (one !== 0) setOne(one - 1);
 
   }
 

@@ -1,13 +1,12 @@
 import React from "react";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "../../styles/counter.css";
 
 
-
 //COMPONENTE
-const Counter = (props) => {
+const Counter = () => {
   const [one, setOne] = useState(0);
   const [two, setTwo] = useState(0);
   const [three, setThree] = useState(0);
@@ -15,8 +14,6 @@ const Counter = (props) => {
   const [five, setFive] = useState(0);
   const [six, setSix] = useState(0);
 
-  let timeout = 0;
-  
   function sumarUnidades () {
 
     if (six === 9) { setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);}
@@ -34,12 +31,10 @@ const Counter = (props) => {
     else setOne(one + 1);
   }
 
-  if(props.estado) {timeout = setTimeout(sumarUnidades, 1000);}
-
-  useEffect(() => {clearTimeout(timeout); setOne(0); setTwo(0); setThree(0); setFour(0); setFive(0); setSix(0);},[props.reset])
+  setTimeout(sumarUnidades, 1000);
 
   return (
-    <div className="container d-flex text-bg-dark">
+    <div className="container d-flex text-bg-success">
       <div className="row bigCounter justify-content-center fw-bold w-100">
         <div className="col-2 calendar">
           <i className="fa-regular fa-clock"></i>
@@ -57,8 +52,6 @@ const Counter = (props) => {
 
 export default Counter;
 
-// {timer = setTimeout(sumarUnidades, 1000);}
-
 // function Timer(callback, delay) {
 //   var timerId, start, remaining = delay;
 
@@ -72,13 +65,6 @@ export default Counter;
 //       window.clearTimeout(timerId);
 //       timerId = window.setTimeout(callback, remaining);
 //   };
-
-//   this.resume();
-// }
-
-// var timer = new Timer(function() {
-//   alert("Done!");
-// }, 1000);
 
 // timer.pause();
 // // Do some stuff...

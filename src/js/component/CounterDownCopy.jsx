@@ -5,7 +5,7 @@ import "../../styles/counter.css";
 
 
 // COMPONENTE
-const CounterDown = (props) => {
+const CounterDownCopy = (props) => {
   const [seconds, setSeconds] = useState(0);
 
   let timeout = 0;
@@ -31,4 +31,4 @@ const CounterDown = (props) => {
   );
 };
 
-export default CounterDown;
+export default CounterDownCopy;
