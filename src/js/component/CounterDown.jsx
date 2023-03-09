@@ -1,24 +1,17 @@
 import React from "react";
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 
 import "../../styles/counter.css";
 
 
 // COMPONENTE
 const CounterDown = (props) => {
-  const [seconds, setSeconds] = useState(0);
-
-  let timeout = 0;
-
-  if(props.valorInicial != 0) {timeout = setTimeout(() => {setSeconds(seconds - 1);},1000);}
-
-  useEffect(() => {clearTimeout(timeout); setSeconds(props.valorInicial);},[props.valorInicial]);
 
   const counter = useMemo(() => {
-    const secondsString = String(seconds).padStart(6,"0");
+    const secondsString = String(props.valorInicial).padStart(6,"0");
     const secondsArray = Array.from(secondsString);
     return secondsArray;
-  },[seconds])
+  },[props.valorInicial])
 
 
   return (

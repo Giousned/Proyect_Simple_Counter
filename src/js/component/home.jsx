@@ -25,6 +25,8 @@ const Home = () => {
 
 	let timeout = 0;
 
+	let timeout2 = 0;
+
 	const handleAlertInputValor = (e, valor) => {
 		if(e.key === "Enter") setAlert(valor);
 	}
@@ -47,12 +49,14 @@ const Home = () => {
 
 	const handleInputValor = (e, valor) => {
 		if(e.key === "Enter") {
+			clearTimeout(timeout2);
 			setValorDown(valor);
 		}
 	}
 
 	if(estado)  { timeout = setTimeout(() => { setCounter(counter + 1);},1000);} 
 
+  	if(valorDown != 0) {timeout2 = setTimeout(() => {setValorDown(valorDown - 1);},1000);}
 
 	return (
 	<>
@@ -63,8 +67,6 @@ const Home = () => {
 
 		<Counter3 alert={alert}/>
 		<AlertInput handleAlertInputValor={handleAlertInputValor} />
-
-
 
 		<CounterDown valorInicial={valorDown} />
 		<Input handleInputValor={handleInputValor} />
